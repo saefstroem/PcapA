@@ -18,7 +18,6 @@ pub enum ByteOrder {
  */
 pub fn parse_byte_order<R: Read>(reader: &mut R) -> io::Result<ByteOrder> {
     let magic_number = read_u32_with_byte_order(reader, &ByteOrder::BigEndian)?;
-    println!("Magic number: {}", magic_number);
     match magic_number {
         x if x == ByteOrder::BigEndian as u32 => Ok(ByteOrder::BigEndian),
         x if x == ByteOrder::LittleEndian as u32 => Ok(ByteOrder::LittleEndian),

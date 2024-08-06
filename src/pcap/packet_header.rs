@@ -10,7 +10,6 @@
 
 */
 pub struct PacketHeader {
-
     pub ts_secs: u32,
     pub ts_micros: f64,
     pub captured_bytes: u32,

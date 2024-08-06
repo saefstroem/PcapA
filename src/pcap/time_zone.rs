@@ -11,7 +11,7 @@ use crate::{pcap::byte_order::ByteOrder, read_bytes::read_i32_with_byte_order};
  */
 #[derive(Debug)]
 pub enum TimeZone {
-    UTC,
+    Utc,
     Local(i32)
 }
 
@@ -22,7 +22,7 @@ pub enum TimeZone {
 pub fn parse_time_zone<R: Read>(reader: &mut R, byte_order: &ByteOrder) -> io::Result<TimeZone> {
     let thiszone = read_i32_with_byte_order(reader, byte_order)?;
     if thiszone == 0 {
-        Ok(TimeZone::UTC)
+        Ok(TimeZone::Utc)
     } else {
         Ok(TimeZone::Local(thiszone))
     }

@@ -8,6 +8,7 @@ use crate::read_bytes::read_u32_with_byte_order;
     * `Swapped/LittleEndian`: The bytes need to be swapped to match the host system.
  */
 #[derive(Debug)]
+#[repr(i64)]
 pub enum ByteOrder {
     BigEndian=0xa1b2c3d4,
     LittleEndian=0xd4c3b2a1

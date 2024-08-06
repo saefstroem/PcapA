@@ -12,6 +12,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "aipn"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3bc40d05d30bd7a7bb0c2cfabb1272f35083d3b128012d9a3836c816b56060ca"
+dependencies = [
+ "num_enum",
+]
+
+[[package]]
 name = "anstream"
 version = "0.6.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -169,6 +178,7 @@ dependencies = [
 name = "pcapa"
 version = "0.1.0"
 dependencies = [
+ "aipn",
  "env_logger",
  "linktype",
  "log",

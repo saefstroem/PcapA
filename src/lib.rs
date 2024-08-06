@@ -46,9 +46,9 @@ impl PCapA {
 
         log::info!("Parsing packets...");
         loop {
-            match parse_packet_header(&mut file, &pcap_file.global_header.byte_order) {
+            match parse_packet_header(&mut file, &pcap_file.global_header) {
                 Ok(packet_header) => {
-                    let packet = parse_packet(&mut file, packet_header,&pcap_file.global_header.byte_order)?;
+                    let packet = parse_packet(&mut file, packet_header,&pcap_file.global_header)?;
                     pcap_file.packets.push(packet);
                 }
                 Err(e) if e.kind() == ErrorKind::UnexpectedEof => break,
@@ -71,11 +71,11 @@ mod tests {
     fn it_works() {
         env_logger::builder().is_test(true).try_init().unwrap();
         let pcap_file = PCapA::open("trafik.pcap").unwrap();
-        let example_packet=pcap_file.packets[0].clone();
+        let example_packet=&pcap_file.packets[0];
 
-        log::info!("{:?}", pcap_file.global_header);
-        log::info!("{:?}", example_packet);
-        log::info!("{:?}", example_packet.ethernet_header.unwrap().source_mac.to_string());
+        log::info!("GH: {:?}", pcap_file.global_header);
+        log::info!("Packet: {:?}", example_packet);
+
     }
 }
 

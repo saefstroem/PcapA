@@ -2,6 +2,7 @@ use std::fmt::Debug;
 
 pub mod ethernet;
 pub mod ipv4;
+pub mod tcp;
 pub mod parse;
 
 
